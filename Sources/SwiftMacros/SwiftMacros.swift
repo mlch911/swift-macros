@@ -3,8 +3,10 @@ import Foundation
 @freestanding(expression)
 public macro URL(_ string: String) -> URL = #externalMacro(module: "Macros", type: "URLMacro")
 
+#if canImport(UIKit) || canImport(AppKit)
 @freestanding(expression)
 public macro symbol(_ name: String) -> String = #externalMacro(module: "Macros", type: "SymbolMacro")
+#endif
 
 @attached(member, names: arbitrary)
 public macro AssociatedValues() = #externalMacro(module: "Macros", type: "AssociatedValuesMacro")
